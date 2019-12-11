@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>PrimeFaces</title>
+                <link rel="stylesheet" type="text/css" href="Recursos/css/estilos_loguin.css" />
+            </f:facet>
+        </h:head>
+        
+
+        <h:body>
+
+            <div class="cuerpologuin2" style="margin: 50px">
+                
+                <h:form id = "verRoles">
+                      <center style="margin-bottom: 0px;"><img src="../Recursos/imagenes/logotipo.png" width="200" height="120"/>                        
+                        <h1 style="margin-top: -5px">GAD PEDRO MONCAYO</h1>
+                        <h2> TRÁMITES INGRESADOS</h2>
+                    </center>
+
+                    <p:dataTable value="#{controladorTramite.listaTramite}" var="lis" resizableColumns="true" liveResize="true"  class="table" style="margin: 10px 30px 50px 30px">
+
+                        <p:column headerText="N° TRAMITE" styleClass="col-width-30">
+                            <h:outputText value="#{lis.tramiteId}"/>
+                        </p:column>
+
+                        <p:column headerText="FECHA INGRESO" styleClass="col-width-30">
+                            <p:calendar value="#{lis.tramiteFechaIngreso}" pattern="yyyy-MM-dd" disabled="true"/>
+                        </p:column>
+
+                        <p:column headerText="REMITENTE" styleClass="col-width-30">
+                            <h:outputText value="#{lis.remitenteId.remitenteNombre}"/>
+                        </p:column>
+                        <p:column headerText="COMPLETAR TRÁMITE" styleClass="col-width-30">
+                            <p:commandButton icon="ui-icon-extlink" action="#{controladorTramite.verTramite(lis)}" class="button"/>
+                        </p:column>
+                    </p:dataTable>
+                </h:form>
+                
+            </div>
+            
+        </h:body>
+
+    </f:view>
+</html>

@@ -1,0 +1,44 @@
+body{
+    background: rgba(210,235,245,0.54); 
+    
+}
+/* ESTILOS DE LA PAG LOGUIN CUERPO */
+.centrar{
+     margin: 50px 0px 30px 0px
+}
+
+.cuerpologuin{
+    border: solid 2px black;  background-color: rgba(100, 211, 284, 0.15);
+}
+
+.login{
+    background-color: rgba(100, 211, 252, 0.35); border-radius: 50px ; margin: 5%; padding: 5%
+}
+.cuerpologuin img, .cuerpologuin2 img{
+    margin-top: -50px;
+ 
+}
+
+.cuerpologuin2{
+    background-color: rgba(100, 211, 252, 0.35);
+    border-radius: 120px 15px 91px 45px;
+    -moz-border-radius: 120px 15px 91px 45px;
+    -webkit-border-radius: 120px 15px 91px 45px;
+    border: 3px dotted #95c2f0;
+}
+
+/* buttom ingreso ROl*/
+.button{
+    margin: 25px
+}
+
+#profile, #contenedor-menu, #footer{
+    background-color: rgba(92,215,243,0.23)
+}
+
+.col-width-30 {
+  width: 140px;
+  font-size: 12px;
+  text-align: center
+}
+

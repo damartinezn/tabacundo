@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui" xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>PrimeFaces</title>
+                <link rel="stylesheet" type="text/css" href="Recursos/css/estilos_loguin.css" />
+            </f:facet>
+
+        </h:head>
+
+        <h:body>
+            <div class="cuerpologuin2" style="margin: 50px">                              
+
+                <h:form id="CrearRol">
+                    <center style="margin-bottom: 0px;"><img src="../Recursos/imagenes/logotipo.png" width="200" height="120"/>                        
+                        <h1 style="margin-top: -5px">GAD PEDRO MONCAYO</h1>
+                        <h2>REGISTRO DE NUEVOS ROLES</h2>
+                        <div class="ui-g">
+                            <div class="ui-g-12 ui-md-12 ui-lg-2"/>
+                            <div class="ui-g-12 ui-md-12 ui-lg-8 cuerpologuin2" >
+                                <div class="ui-g-12 ui-md-12 ui-lg-12">
+                                    <div class="ui-g-12 ui-md-12 ui-lg-6" >
+                                        <p:outputLabel value="NOMBRE DEL ROL"/>
+                                    </div>
+                                    <div class="ui-g-12 ui-md-12 ui-lg-6" > 
+                                        <p:inputText value="#{ControladorRol.rol.rolNombre}" onkeyup="this.value = this.value.toUpperCase();" style="width: 100%"/>
+                                    </div>
+                                </div>
+                                <div class="ui-g-12 ui-md-12 ui-lg-12">
+                                    <div class="ui-g-12 ui-md-12 ui-lg-6" >
+                                        <p:outputLabel value="DESCRIPCIÓN DEL ROL"/>
+                                    </div>
+                                    <div class="ui-g-12 ui-md-12 ui-lg-6" > 
+                                        <p:inputTextarea rows="6" cols="33" value="#{ControladorRol.rol.rolDescripcion}" onkeyup="this.value = this.value.toUpperCase();" autoResize="true" style="width: 100%"/> 
+                                    </div>
+                                </div>
+                                <div class="ui-g-12 ui-md-12 ui-lg-12">
+                                    <div class="ui-g-12 ui-md-12 ui-lg-6" > 
+                                        <p:outputLabel value="SELECCIONE MENÚ"/>
+                                    </div>
+                                    <div class="ui-g-12 ui-md-12 ui-lg-6" > 
+                                        <p:selectManyCheckbox value="#{ControladorRol.auxLista}" layout="responsive" columns="3" style="width: 100%">
+                                            <f:selectItems value="#{ControladorRol.listaMenu}" var="lis" itemLabel="#{lis.menuNombre}" itemValue="#{lis.menuId}" />
+                                        </p:selectManyCheckbox>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ui-g-12 ui-md-12 ui-lg-2"/>
+                        </div>                
+
+                        <p:commandButton value="GUARDAR" action="#{ControladorRol.crearRol()}" update ="CrearRol" class="button"/>
+                        <p:commandButton value="CANCELAR" action="verRoles.xhtml?faces-redirect=true" class="button"/>
+
+                    </center>
+                </h:form>
+
+            </div>
+
+        </h:body>
+
+    </f:view>
+</html>
+

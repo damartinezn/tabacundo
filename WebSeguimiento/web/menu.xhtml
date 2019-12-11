@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+
+            <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+            <title>PrimeFaces</title>
+            <link rel="stylesheet" type="text/css" href="../Recursos/css/estilo.css" />
+
+            <link rel="stylesheet" type="text/css" href="../Recursos/css/accordion.css" />
+            <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+            <script type="text/javascript" src="../Recursos/jquery/accordion.js"></script>
+            <link rel="stylesheet" type="text/css" href="Recursos/css/estilos_loguin.css" />
+            <f:event type="preRenderView" listener="#{ControladorSesion.verificarSesion()}" />
+        </h:head>
+
+        <h:body>
+            <p:messages autoUpdate="true" showDetail="true"/>
+            <table id="principal" height="100%">
+                <tr height="110px">
+                    <td width="200px">
+                        <div id="profile">
+                            <div class="ui-grid"><div class="ui-grid-col-12"><img src="Recursos/imagenes/user2.png" width="50" height="50"/></div></div>
+                            <span id="bienvenido_disp">BIENVENIDO</span>
+                            <br/>
+                            <p:outputLabel value="#{ControladorUsuarios.auxUsua.usuarioNombre}"/>
+                        </div>
+                    </td>
+                    <td width="100%">
+                        <div id="profile" style="height: 100%">
+                            <h1>SISTEMA DE SEGUIMIENTO DE DOCUMENTOS</h1>
+                        </div>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td valign="top">
+                        <div id="contenedor-menu">
+
+                            <div class="accordion">
+
+                                <div class="accordion-section">
+                                    <a class="accordion-section-title" href="#" onclick="window.open('peu.xhtml', 'princ')">INICIO</a>
+                                </div>
+                                <ui:fragment rendered="#{ControladorUsuarios.isTramite}">
+                                    <div class="accordion-section">
+                                        <a class="accordion-section-title" href="#accordion-1">TRAMITES</a>
+
+                                        <div id="accordion-1" class="accordion-section-content">
+                                            <ul>
+                                                <li><a href="#" onclick="window.open('bandejaEntrada.xhtml', 'princ')">BANDEJA DE ENTRADA</a></li>
+                                                <li><a href="#" onclick="window.open('tramiteAtendido.xhtml', 'princ')">TRAMITES ATENDIDOS</a></li>
+                                                <li><a href="#" onclick="window.open('peu.xhtml', 'princ')">TRAMITES CERRADOS</a></li> 
+                                            </ul>
+                                        </div><!--end .accordion-section-content-->
+                                    </div><!--end .accordion-section-->
+                                </ui:fragment>
+
+                                <ui:fragment rendered="#{ControladorUsuarios.isIngresoTramite}">
+                                    <div class="accordion-section">
+                                        <a class="accordion-section-title" href="#" onclick="window.open('ingresoTramite.xhtml', 'princ')">INGRESO TRAMITE</a>
+                                    </div>
+                                </ui:fragment>
+                                <ui:fragment rendered="#{ControladorUsuarios.isCompletar}">
+                                    <div class="accordion-section">
+                                        <a class="accordion-section-title" href="#" onclick="window.open('verTramites.xhtml', 'princ')">COMPLETAR TRAMITE</a>
+                                    </div>
+                                </ui:fragment>
+                                <ui:fragment rendered="#{ControladorUsuarios.isReporte}">
+                                    <div class="accordion-section">
+                                        <a class="accordion-section-title" href="#" onclick="window.open('generarCodigoBarras.xhtml', 'princ')">REPORTES</a>
+                                    </div>
+                                </ui:fragment>
+                                <ui:fragment rendered="#{ControladorUsuarios.isAdmin}">
+                                    <div class="accordion-section">
+                                        <a class="accordion-section-title" href="#accordion-4">ADMINISTRAR</a>
+
+                                        <div id="accordion-4" class="accordion-section-content">
+                                            <ul>
+                                                <li><a href="#" onclick="window.open('verUsuarios.xhtml', 'princ')">USUARIOS</a></li>
+                                                <li><a href="#" onclick="window.open('verUnidades.xhtml', 'princ')">UNIDAD</a></li>
+                                                <li><a href="#" onclick="window.open('verRoles.xhtml', 'princ')">ROLES</a></li>
+                                            </ul>
+                                        </div><!--end .accordion-section-content-->
+                                    </div><!--end .accordion-section-->
+                                </ui:fragment>
+                                <div class="accordion-section">
+                                    <a class="accordion-section-title" href="faces/index.xhtml?faces-redirect=true" >SALIR</a><!--MODIFICAR SALIDA SISTEMA-->
+                                </div><!--end .accordion-section-->
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div id="contenido">
+
+                            <iframe id="princ" src="peu.xhtml" name="princ" frameborder="0" > </iframe>
+
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="2" height="54px">
+                        <div id="footer">
+                            <p:outputLabel value="Sistema Inventario y Facturacion FULL LIMPIO AUTOLAVO"/>
+                        </div>
+                    </td>
+                </tr>
+
+            </table>
+        </h:body>
+
+    </f:view>
+</html>
+

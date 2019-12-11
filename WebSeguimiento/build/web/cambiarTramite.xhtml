@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>PrimeFaces</title>
+            </f:facet>
+
+        </h:head>
+
+
+        <h:body>
+
+            <style type="text/css">
+                /** Demo **/
+                .ui-outputlabel {
+                    font-weight: bold;
+                }
+
+                .ui-orderlist .ui-orderlist-list {
+                    height: auto;
+                }
+            </style>
+            <h:form>
+                <center style="margin: 10px;"><img src="../Recursos/imagenes/logotipo.png" width="190" height="80"/>                    
+                    <h1>GAD PEDRO MONCAYO</h1>
+                    <h2> COMPLETAR TRÁMITES</h2>
+                </center>
+                <div class="ui-fluid">
+                    <p:panelGrid columns="4" columnClasses="ui-g-12 ui-md-2,ui-g-12 ui-md-4,ui-g-12 ui-md-2,ui-g-12 ui-md-4" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+                        <p:outputLabel value="N° TRÁMITE"/>
+                        <p:outputLabel value ="#{controladorTramite.tramite.tramiteId}" />
+
+                        <p:outputLabel value="FECHA INGRESO"/>
+                        <p:outputLabel value ="#{controladorTramite.tramite.tramiteFechaIngreso}" />
+
+                        <p:outputLabel value="N° DOCUMENTO"/>
+                        <p:outputLabel value ="#{controladorTramite.tramite.tramiteNumDoc}" />
+
+                        <p:outputLabel value="FECHA DOCUMENTO"/>
+                        <p:outputLabel value ="#{controladorTramite.tramite.tramiteFechaDoc}" />
+
+                        <p:outputLabel value="REMITENTE"/>
+                        <p:outputLabel value ="#{controladorTramite.tramite.remitenteId.remitenteNombre}" />
+
+                        <p:outputLabel value="RAZÓN SOCIAL"/>
+                        <p:outputLabel value ="#{controladorTramite.tramite.remitenteId.remitenteRazon}" />
+
+                        <p:outputLabel value="CONTACTO"/>
+                        <p:outputLabel value ="#{controladorTramite.tramite.tramiteContacto}" />
+                    </p:panelGrid>
+                </div>
+                <center>
+                    <div>
+                        <p:panelGrid columns="2" >
+                            <p:outputLabel value="DIRIGIDO A"/>
+                            <p:inputText value="#{controladorTramite.tramite.tramiteDirigido}" onkeyup="this.value = this.value.toUpperCase();"/>
+
+                            <p:outputLabel value="UNIDAD DESTINO"/>
+                            <p:selectCheckboxMenu value="#{controladorTramite.auxListaUnidad}" label="Cities" multiple="true" filter="true" filterMatchMode="startsWith" panelStyle="width:250px">
+                                <f:selectItems value="#{controladorTramite.listaUnidad}" var="uni" itemLabel="#{uni.unidadNombre}" itemValue="#{uni.unidadId}" />
+                            </p:selectCheckboxMenu>
+
+                            <p:outputLabel value="UNIDAD COPIA"/>
+                            <p:selectCheckboxMenu value="#{controladorTramite.auxListaUnidadCopia}" label="Cities" multiple="true" filter="true" filterMatchMode="startsWith" panelStyle="width:250px">
+                                <f:selectItems value="#{controladorTramite.listaUnidad}" var="uni" itemLabel="#{uni.unidadNombre}" itemValue="#{uni.unidadId}"/>
+                            </p:selectCheckboxMenu>
+
+                            <p:outputLabel value="DÍAS TRÁMITE"/>
+                            <p:inputText value="#{controladorTramite.tramite.tramiteDias}" />
+
+                            <p:outputLabel value="ASUNTO"/>
+                            <p:inputText value="#{controladorTramite.tramite.tramiteAsunto}" onkeyup="this.value = this.value.toUpperCase();"/>
+
+                            <p:outputLabel value="ANEXOS"/>
+                            <p:inputText value="#{controladorTramite.tramite.tramiteAnexo}" onkeyup="this.value = this.value.toUpperCase();"/>
+
+                        </p:panelGrid>
+                        <p:commandButton value="GUARDAR" action="#{controladorTramite.completarTramite()}"/>
+                        <p:commandButton value="CANCELAR" action="verTramites.xhtml?faces-redirect=true"/>
+                    </div>
+                </center>
+            </h:form>
+
+        </h:body>
+
+    </f:view>
+</html>
+

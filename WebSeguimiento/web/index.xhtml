@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <f:facet name="first">
+            <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+
+            <title>FULL LIMPIO-SISTEMA DE INVENTARIO Y FACTURACION</title>
+            <link rel="stylesheet" type="text/css" href="Recursos/css/estilos_loguin.css" />
+           
+        </f:facet>        
+    </h:head>
+    <h:body >
+        <p:messages autoUpdate="true" showDetail="true"/>
+        
+            <section id="Formulario" >          
+
+                <div class="ui-g centrar">
+                    <div class="ui-g-12 ui-md-12 ui-lg-3"/>
+                    
+                    <div class="ui-g-12 ui-md-12 ui-lg-6 cuerpologuin">
+                        <center style="margin-bottom: -30px"><img src="Recursos/imagenes/logotipo.png" width="500" height="250"/></center>
+
+                        <div class ="login " style=" border-radius: 120px 45px 120px 4px;
+                                                    -moz-border-radius: 120px 45px 120px 4px;
+                                                    -webkit-border-radius: 120px 45px 120px 4px;
+                                                    border: 3px dotted #95c2f0;">
+                            <h:form>
+                                <center>
+
+                                        <p>Bienvenido  al sistema<br/>Por favor identifíquese</p>
+
+                                        <h:panelGrid columns="2" >
+                                            <p:outputLabel for="txtUsuario" value="USUARIO " />
+                                            <p:inputText id="txtUsuario" value="#{ControladorUsuarios.usuario.usuarioUsuario}" placeholder="1234567890"/>
+                                            <p:outputLabel for ="txtClave" value="CONTRASEÑA"/>
+                                            <p:password id="txtClave" value="#{ControladorUsuarios.usuario.usuarioPassword}" placeholder="Password"/>
+                                            <p:commandButton value="INGRESAR" icon="ui-icon-key" action="#{ControladorUsuarios.loguin()}"/>
+                                            <p:commandButton value="BORRAR"  icon="ui-icon-refresh" type="reset"/>
+                                        </h:panelGrid> 
+
+                                        <p>¿Olvido su contraseña? - Ayuda</p>
+
+                                </center>
+                            </h:form>	
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="ui-g-12 ui-md-12 ui-lg-3"/>
+                    
+                </div>
+            </section>
+
+        <div id="footer-login">
+
+            <p:outputLabel value=" © 2018 Sistema de Inventario y Facturación. "/>
+
+        </div>
+    </h:body>
+</html>
+

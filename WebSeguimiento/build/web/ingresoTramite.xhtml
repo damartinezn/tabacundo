@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>PrimeFaces</title>
+                <link rel="stylesheet" type="text/css" href="Recursos/css/estilos_loguin.css" />
+            </f:facet>            
+        </h:head>
+
+        <script type="text/javascript">
+            PrimeFaces.locales['de'] = {
+                closeText: 'Schließen',
+                prevText: 'Zurück',
+                nextText: 'Weiter',
+                monthNames: ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'],
+                monthNamesShort: ['Jan', 'Feb', 'März', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'],
+                dayNames: ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'],
+                dayNamesShort: ['Son', 'Mon', 'Die', 'Mit', 'Don', 'Fre', 'Sam'],
+                dayNamesMin: ['S', 'M', 'D', 'M ', 'D', 'F ', 'S'],
+                weekHeader: 'Woche',
+                FirstDay: 1,
+                isRTL: false,
+                showMonthAfterYear: false,
+                yearSuffix: '',
+                timeOnlyTitle: 'Nur Zeit',
+                timeText: 'Zeit',
+                hourText: 'Stunde',
+                minuteText: 'Minute',
+                secondText: 'Sekunde',
+                currentText: 'Aktuelles Datum',
+                ampm: false,
+                month: 'Monat',
+                week: 'Woche',
+                day: 'Tag',
+                allDayText: 'Ganzer Tag'
+            };
+            PrimeFaces.locales ['de'] = {
+                closeText: 'Schließen',
+                prevText: 'Zurück',
+                nextText: 'Weiter',
+                monthNames: ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'],
+                monthNamesShort: ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'],
+                dayNames: ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'],
+                dayNamesShort: ['Son', 'Mon', 'Die', 'Mit', 'Don', 'Fre', 'Sam'],
+                dayNamesMin: ['S', 'M', 'D', 'M ', 'D', 'F ', 'S'],
+                weekHeader: 'Woche',
+                firstDay: 1,
+                isRTL: false,
+                showMonthAfterYear: false,
+                yearSuffix: '',
+                timeOnlyTitle: 'Nur Zeit',
+                timeText: 'Zeit',
+                hourText: 'Stunde',
+                minuteText: 'Minute',
+                secondText: 'Sekunde',
+                currentText: 'Aktuelles Datum',
+                ampm: false,
+                month: 'Monat',
+                week: 'Woche',
+                day: 'Tag',
+                allDayText: 'Ganzer Tag'
+            };
+        </script>
+
+        <style type="text/css">
+            .value {
+                font-weight: bold;
+            }
+        </style>
+
+        <h:body>
+
+            <div class="cuerpologuin2" style="margin: 50px">
+                <h:form id="CrearTramite">
+                    <center style="margin-bottom: 0px;"><img src="../Recursos/imagenes/logotipo.png" width="200" height="120"/>                        
+                        <h1 style="margin-top: -5px">GAD PEDRO MONCAYO</h1>
+                        <h2>INGRESO DE TRAMITES</h2>
+                        <h:panelGrid columns="4" >
+                            <p:outputLabel value="FECHA INGRESO" />
+                            <p:calendar value="#{controladorTramite.dateDe}" locale="de" navigator="true" pattern="yyyy-MM-dd" disabled="true"/>
+                            <h:outputText value=""/>
+                            <h:outputText value=""/>
+
+                            <p:outputLabel value="NOMBRE REMITENTE"/>
+                            <p:autoComplete value="#{controladorTramite.auxNombre}" completeMethod="#{controladorTramite.completeText}" emptyMessage="Ningun dato coincide" onkeyup="this.value = this.value.toUpperCase();"/>
+                            <p:commandButton  icon="ui-icon-circle-plus" onclick="PF('dlg').show();"/>
+                            <p:dialog header="RIGISTAR NUEVO REMITENTE" widgetVar="dlg" resizable="false">
+                                <h:panelGrid columns="2" cellpadding="5">
+                                    <h:outputText value="CEDULA" />
+                                    <p:inputText value="#{controladorTramite.remitente.remitenteCi}"  />
+
+                                    <h:outputText value="NOMBRE" />
+                                    <p:inputText value="#{controladorTramite.remitente.remitenteNombre}" onkeyup="this.value = this.value.toUpperCase();" />
+
+                                    <h:outputText value="RAZON SOCIAL" />
+                                    <p:inputText value="#{controladorTramite.remitente.remitenteRazon}" onkeyup="this.value = this.value.toUpperCase();"/> 
+
+                                </h:panelGrid>
+                                <p:commandButton icon="ui-icon-disk" value="GUARDAR" action="#{controladorTramite.crearRemitente()}" onclick="PF('dlg').hide();"/>
+                            </p:dialog>
+
+                            <p:outputLabel value="N° DOCUMENTO"/>
+                            <p:inputText value="#{controladorTramite.tramite.tramiteNumDoc}"/>
+                            <h:outputText value=""/>
+                            <h:outputText value=""/>
+
+                            <p:outputLabel value="FECHA DOCUMENTO"/>
+                            <p:calendar value="#{controladorTramite.tramite.tramiteFechaDoc}" locale="de" pattern="yyyy-MM-dd"/>
+                            <h:outputText value=""/>
+                            <h:outputText value=""/>
+
+                            <p:outputLabel value="CONTACTO" />
+                            <p:inputText value="#{controladorTramite.tramite.tramiteContacto}" onkeyup="this.value = this.value.toUpperCase();"/>
+                            <h:outputText value=""/>
+                            <h:outputText value=""/>
+
+                        </h:panelGrid>
+
+                        <p:commandButton value="GUARDAR" action="#{controladorTramite.crearTramite()}" class="button"/>
+                        <p:commandButton value="CANCELAR" action="verTramites.xhtml?faces-redirect=true" class="button"/>
+                    </center>
+                </h:form>
+
+            </div>                     
+
+
+        </h:body>
+
+    </f:view>
+</html>
+

@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>PrimeFaces</title>
+                <link rel="stylesheet" type="text/css" href="Recursos/css/estilos_loguin.css" />
+            </f:facet>
+            
+        </h:head>
+
+        <h:body>
+
+            <div class="cuerpologuin2" style="margin: 50px">
+                <h:form id="verRoles">
+                    <center style="margin-bottom: 0px;"><img src="../Recursos/imagenes/logotipo.png" width="200" height="120"/>                        
+                        <h1 style="margin-top: -5px">GAD PEDRO MONCAYO</h1>
+                      <h2> USUARIOS REGISTRADOS</h2>
+                  </center>
+
+                  <p:commandButton value="CREAR NUEVO USUARIO" action="ingresoUsuarios.xhtml?faces-redirect=true" style="margin-left: 25px"/>
+
+                  <p:dataTable value="#{ControladorUsuarios.listaUsuarios}" var="lis" editable="true" resizableColumns="true" liveResize="true"  class="table" style="margin: 10px 30px 50px 30px">
+
+                      <p:column headerText="CEDULA" styleClass="col-width-30">
+                          <p:cellEditor>
+                              <f:facet name="output">
+                                  <h:outputText value="#{lis.usuarioCi}"/>
+                              </f:facet>
+                              <f:facet name="input">
+                                  <h:inputText value="#{lis.usuarioCi}"/>
+                              </f:facet>
+                          </p:cellEditor>
+                      </p:column>
+
+                      <p:column headerText="NOMBRE" styleClass="col-width-30">
+                          <p:cellEditor>
+                              <f:facet name="output">
+                                  <h:outputText value="#{lis.usuarioNombre}"/>
+                              </f:facet>
+                              <f:facet name="input">
+                                  <h:inputText value="#{lis.usuarioNombre}"/>
+                              </f:facet>
+                          </p:cellEditor>
+                      </p:column>
+
+                      <p:column headerText="USUARIO" styleClass="col-width-30">
+                          <p:cellEditor>
+                              <f:facet name="output">
+                                  <h:outputText value="#{lis.usuarioUsuario}"/>
+                              </f:facet>
+                              <f:facet name="input">
+                                  <h:inputText value="#{lis.usuarioUsuario}"/>
+                              </f:facet>
+                          </p:cellEditor>
+                      </p:column>
+
+                      <p:column headerText="CORREO ELECTRÓNICO" styleClass="col-width-30">
+                          <p:cellEditor>
+                              <f:facet name="output">
+                                  <h:outputText value="#{lis.usuarioCorreo}"/>
+                              </f:facet>
+                              <f:facet name="input">
+                                  <h:inputText value="#{lis.usuarioCorreo}"/>
+                              </f:facet>
+                          </p:cellEditor>
+                      </p:column>
+
+                      <p:column style="width: 100px" headerText="EDITAR" styleClass="col-width-30">
+                          <p:rowEditor />
+                      </p:column> 
+                      <p:ajax event="rowEdit" listener="#{ControladorUsuarios.editarUsuarios(lis)}" />
+
+                      <p:column style="width: 100px" headerText="ELIMINAR" styleClass="col-width-30">
+                          <p:commandButton  icon="ui-icon-trash" actionListener="#{ControladorUsuarios.eliminarUsuarios(lis)}" action= "verUsuarios.xhtml?faces-redirect=true"/>
+                      </p:column> 
+                  </p:dataTable>
+
+              </h:form>
+            </div>
+            
+        </h:body>
+
+    </f:view>
+</html>
